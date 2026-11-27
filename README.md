@@ -1,4 +1,4 @@
-# 🧠 VN-INFRA AI Shared Brain (`v2.3 · 2026`)
+# 🧠 VN-INFRA AI Shared Brain (`v2.4 · 2026`)
 
 > **Bộ não dùng chung tối giản trên GitHub** cho **Claude**, **ChatGPT**, **Gemini** và **Antigravity**.  
 > Chỉnh sửa trực tiếp từng file Markdown trên GitHub — **một nguồn sự thật duy nhất (`BRAIN.md`)**, không cần build phức tạp.

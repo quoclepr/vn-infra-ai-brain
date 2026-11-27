@@ -1,4 +1,4 @@
-# BỘ NÃO DÙNG CHUNG ĐA AI — VN-INFRA-CONSULTING (v2.3 · 2026)
+# BỘ NÃO DÙNG CHUNG ĐA AI — VN-INFRA-CONSULTING (v2.4 · 2026)
 
 > **Nguồn sự thật duy nhất (Single Source of Truth)** dùng chung cho **Claude, ChatGPT, Gemini và Antigravity**.  
 > Khi chỉnh sửa trực tiếp file này trên GitHub, toàn bộ các AI đọc repo sẽ đồng bộ ngay lập tức.
@@ -85,6 +85,6 @@ Luôn kết thúc mỗi bước chuyên môn chính bằng **3 dòng bàn giao**
 | [knowledge/02_tdt_autocad_ban_ve_tcvn.md](knowledge/02_tdt_autocad_ban_ve_tcvn.md) | TDT VNRoad CAD 2024, AutoLISP, `KTALL`, Quy cách bản vẽ TCVN |
 | [knowledge/03_tham_tra_du_toan_quy_hoach.md](knowledge/03_tham_tra_du_toan_quy_hoach.md) | Thẩm tra (mẫu đơn vị thẩm tra), Dự toán MATY/Bắc Nam, Quy hoạch MCA |
 | [knowledge/04_quy_trinh_van_hanh_bo_nao.md](knowledge/04_quy_trinh_van_hanh_bo_nao.md) | Quy trình 4 bước, quản lý phiên, mẫu bộ não dự án & an toàn dữ liệu |
-| [knowledge/05_nhat_ky_duc_ket_kinh_nghiem.md](knowledge/05_nhat_ky_duc_ket_kinh_nghiem.md) | Nhật ký bài học thực chiến đa AI (`v1.1 → v2.3`) |
+| [knowledge/05_nhat_ky_duc_ket_kinh_nghiem.md](knowledge/05_nhat_ky_duc_ket_kinh_nghiem.md) | Nhật ký bài học thực chiến đa AI (`v1.1 → v2.4`) |
 | [scripts/](scripts/) | 4 script Python kiểm toán BOQ, chấm điểm MCA, khởi tạo bộ não & sao lưu |
 | [projects/](projects/) | Khung theo dõi dự án chuẩn *(chỉ lưu Markdown phi mật — xem quy tắc bảo mật)* |
