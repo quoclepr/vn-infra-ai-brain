@@ -1,0 +1,56 @@
+# ==============================================================================
+# BẢO VỆ PUBLIC REPO — CHẶN TUYỆT ĐỐI HỒ SƠ MẬT, FILE CAD & DỮ LIỆU KHÁCH HÀNG
+# ==============================================================================
+
+# 1. File bản vẽ CAD / Địa hình / TDT / NOVA (nặng & thuộc hồ sơ dự án)
+*.dwg
+*.dxf
+*.bak
+*.sv$
+*.ntd
+*.dntd
+*.dntn
+*.las
+*.laz
+*.shp
+*.dbf
+*.shx
+
+# 2. File hồ sơ Office & PDF (dự toán thật, thuyết minh, quyết định phê duyệt)
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.xlsm
+*.ppt
+*.pptx
+
+# 3. File nén, sao lưu & ảnh chụp hồ sơ lớn
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+_Backups/
+backups/
+
+# 4. Bí mật, chứng chỉ & cấu hình cục bộ
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*secret*
+*token*
+*credential*
+
+# 5. Rác hệ thống & Python cache
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
