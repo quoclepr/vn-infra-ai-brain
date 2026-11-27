@@ -17,6 +17,32 @@ __pycache__/
 Thumbs.db
 """
 
+SECRET_GITIGNORE = """
+# Bao ve thong tin dang nhap; giu khoi Git ke ca khi co quy tac ! o tren
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+.git-credentials
+.netrc
+_netrc
+.npmrc
+.pypirc
+*secret*
+*token*
+*credential*
+.ssh/
+.aws/
+.azure/
+gcloud/
+"""
+
 STANDARD_DIRS = [
     ".agents/rules",
     "01_PhapLy_TieuChuan",
@@ -101,8 +127,12 @@ def main() -> None:
     git_status = "NOT REQUESTED"
     if args.git:
         gitignore_path = root / ".gitignore"
-        if not gitignore_path.exists():
-            gitignore_path.write_text(GITIGNORE_TEMPLATE, encoding="utf-8")
+        if gitignore_path.is_symlink():
+            raise SystemExit("[LỖI] Không cập nhật .gitignore qua liên kết tệp.")
+        existing = gitignore_path.read_text(encoding="utf-8") if gitignore_path.exists() else GITIGNORE_TEMPLATE
+        # Append last so earlier negations cannot re-include these files.
+        if not existing.endswith(SECRET_GITIGNORE):
+            gitignore_path.write_text(existing + SECRET_GITIGNORE, encoding="utf-8")
         if not (root / ".git").exists():
             try:
                 res = subprocess.run(["git", "init"], cwd=root, capture_output=True, text=True)

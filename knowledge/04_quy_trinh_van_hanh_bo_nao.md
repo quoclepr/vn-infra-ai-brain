@@ -106,7 +106,7 @@ Chạy trực tiếp script khép vòng [wf_2ai_thuc_thi_kiem_tra.py](../tu-dong
 
 ```text
 run_workflow(
-  ScriptPath="C:/Users/5050/.gemini/config/plugins/vn-infra-consulting/skills/tu-dong-hoa-quy-trinh/scripts/wf_2ai_thuc_thi_kiem_tra.py",
+  ScriptPath="<USER_HOME>/.gemini/config/plugins/vn-infra-consulting/skills/tu-dong-hoa-quy-trinh/scripts/wf_2ai_thuc_thi_kiem_tra.py",
   Cwd="<duong_dan_thu_muc_du_an>",
   Args={
     "task": "<Mô tả đầu việc cần AI 1 thực thi>",
