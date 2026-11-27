@@ -12,20 +12,20 @@
 
 ## 1. Kiến Trúc TDT & Công Cụ Bổ Trợ Đã Cài Trên Máy
 - **Bản cài gốc TDT:** `C:\Program Files (x86)\TDT Solution 2022` (không sửa file gốc của hãng).
-- **Thư mục khởi động (Startup):** `D:\TDT_CAD2024_DIDONG\STARTUP\` (`acad.rx`, `acad.lsp`, `acaddoc.lsp`) tự động nạp:
+- **Thư mục khởi động (Startup):** `<TDT_ROOT>\STARTUP\` (`acad.rx`, `acad.lsp`, `acaddoc.lsp`) tự động nạp:
   - 7 MenuGroups TDT: `KSVN`, `VNROAD`, `SANNEN`, `KVN`, `DCCT`, `TDT3D`, `RM`.
   - Hơn 20 module ARX/DBX: `TDTObjects.dbx`, `AlignmentDb.dbx`, `AlignmentUI.arx`, `HorizontalProfileDesign.arx`, `NhapSoLieuTuyen.arx`, `ProjectDH.arx`, `SNVN.arx`, `RoadMarkingUI.arx`, `RoadSignsUI.arx`...
   - Bộ lệnh **Vạch sơn QCVN 41:2024** (`VACHSON41.lsp`): `VSDONVI`, `VS73`–`VS78`, `VS41`–`VS44`, `VS61`, `VS62`, `VS92`, `VSCATALOG`, `VSHELP`.
   - Bộ lệnh **Kiểm tra tự động TKĐ AUTO** (`TKDAUTO_KIEMTRA.lsp`): `KTTHAMSO`, `KTDOC`, `KTBTH`, `KTBUOC`, `KLSON`, `KTALL`, `KTHELP`.
 - **Thư viện tham khảo sẵn có:**
-  - Bộ vạch sơn & biển báo QCVN 41:2024: `D:\CATALO_VSBB_QCVN_41_2024\`
-  - Bản vẽ mẫu TDT hoàn chỉnh: `D:\TDT_CAD2024_DIDONG\CHAY_THU_20261111\TUYEN_THU_HOAN_TAT.dwg`
+  - Bộ vạch sơn & biển báo QCVN 41:2024: `<SIGNAGE_ROOT>\`
+  - Bản vẽ mẫu TDT hoàn chỉnh: `<TDT_ROOT>\CHAY_THU_20261111\TUYEN_THU_HOAN_TAT.dwg`
 
 ---
 
 ## 2. Nguyên Tắc Vàng Khi Điều Khiển AutoCAD + TDT Qua MCP (`vn-infra-consulting_autocad`)
 1. **Chỉ mở MỘT phiên AutoCAD 2024 duy nhất** ở quyền người dùng thường (không *Run as Administrator*) để tránh xung đột COM.
-2. **Bảo vệ bản gốc:** Tuyệt đối không vẽ/ghi đè trực tiếp lên file trong `D:\TDT_CAD2024_DIDONG\`; luôn sao chép bản vẽ sang thư mục dự án làm việc rồi mới thao tác.
+2. **Bảo vệ bản gốc:** Tuyệt đối không vẽ/ghi đè trực tiếp lên file trong `<TDT_ROOT>\`; luôn sao chép bản vẽ sang thư mục dự án làm việc rồi mới thao tác.
 3. **Quản lý đối tượng tùy biến TDT (`TdtDbMeasurePointObj`, `TdtDbAlignment`):**
    - Không dùng DXF code `10` cho `TdtDbMeasurePointObj`; muốn lấy tọa độ nhanh trong AutoLISP dùng `(vla-GetBoundingBox obj 'p1 'p2)`.
    - Khi số lượng điểm đo lớn (`> 5.000` đối tượng), tránh quét tuần tự từng đối tượng qua COM Python; dùng AutoLISP `(ssget "X" ...)` để lấy mẫu/thống kê trong `< 0,5 giây`.

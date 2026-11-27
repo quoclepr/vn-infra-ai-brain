@@ -27,6 +27,10 @@ vn-infra-ai-brain/
 │   ├── init_project_brain.py
 │   ├── mca_scoring.py
 │   └── snapshot_project.py
+├── resources/
+│   └── GEMINI_template.md  ← Mẫu được script khởi tạo dự án sử dụng
+├── tests/
+│   └── test_project_data_safety.py
 └── projects/
     ├── README.md           ← Bảng theo dõi các dự án (chỉ lưu Markdown phi mật)
     └── _TEMPLATE/          ← Mẫu bộ não dự án & nhật ký quyết định chuẩn 2026
@@ -94,6 +98,26 @@ Dùng khi mở một cuộc chat mới trên **ChatGPT / Claude / Gemini** mà c
 
 ## 5. Quy Tắc Bảo Mật Bắt Buộc (Public Repo)
 - Kho này đặt **Public** để mọi AI đọc Raw URL không gặp tường xác thực.
-- File `.gitignore` đã **chặn cứng** mọi file hồ sơ: `*.dwg`, `*.dxf`, `*.ntd`, `*.pdf`, `*.docx`, `*.xlsx`, `*.xls`, `*.zip`, `.env`, `*secret*`, `*token*`.
+- File `.gitignore` giúp Git bỏ qua các tệp chưa được theo dõi theo mẫu tên: `*.dwg`, `*.dxf`, `*.ntd`, `*.pdf`, `*.docx`, `*.xlsx`, `*.xls`, `*.zip`, `.env`, `*secret*`, `*token*`. Tệp đã được Git theo dõi vẫn có thể được commit; `.gitignore` không quét nội dung để phát hiện khóa bị dán vào mã nguồn hay Markdown.
 - **Chỉ lưu:** quy tắc, tiêu chuẩn, prompt, script tổng quát và ghi chú dự án đã ẩn danh/phi mật.
 - **Không bao giờ đưa lên kho này:** tên chủ đầu tư/nhà thầu nhạy cảm, đơn giá thầu mật, file bản vẽ/dự toán thật, thông tin cá nhân hoặc API key.
+
+## 6. Khởi tạo và sao lưu dự án cục bộ
+
+```powershell
+python scripts/init_project_brain.py --target "./DU_AN_TEST" --code "DA-TEST" --name "Dự án thử" --type tham-tra --git
+python scripts/snapshot_project.py --project "./DU_AN_TEST" --label "truoc_khi_sua"
+```
+
+- Khi có `--git`, script khởi tạo bổ sung quy tắc loại trừ `.env*`, khóa PEM/KEY/P12/PFX, khóa SSH, tệp đăng nhập Git/npm/Python và tên chứa `secret`, `token`, `credential`. Quy tắc riêng trong `.gitignore` có sẵn được giữ lại; khối bảo vệ được đặt cuối tệp và chạy lại không làm lặp khối đó. Script từ chối ghi qua `.gitignore` là liên kết tệp.
+- Script ZIP tự áp dụng bộ lọc tên bí mật kể cả khi dự án không dùng Git. Nó loại thư mục thông tin đăng nhập phổ biến, cache, bản sao lưu cũ và liên kết tệp/thư mục (gồm junction/reparse point trên Windows); `_Backups` phải là thư mục thật. Bộ lọc tên không phân biệt hoa thường.
+- Bản sao lưu vẫn giữ tài liệu CAD/Office thông thường phục vụ khôi phục dự án. ZIP không được mã hóa; không chia sẻ ZIP chứa hồ sơ riêng tư lên kho công khai.
+- Đây là bộ lọc tên, không phải công cụ quét bí mật trong nội dung hay bộ đọc toàn bộ quy tắc `.gitignore`. Tệp có tên bình thường vẫn có thể chứa thông tin nhạy cảm. Khi bổ sung mẫu tên bí mật, cập nhật cả hai script và kiểm thử hồi quy.
+- Chạy trên cây thư mục ổn định, không có tiến trình khác thay đổi liên kết trong lúc sao lưu. Trên Windows, các kiểm thử tạo liên kết tệp cần quyền tạo symbolic link hoặc Developer Mode.
+- Trong tài liệu công khai, `<USER_HOME>`, `<LOCAL_WORKSPACE>`, `<TDT_ROOT>` và `<SIGNAGE_ROOT>` là ký hiệu thay cho đường dẫn máy riêng; thay bằng thư mục thực tế khi chạy ví dụ.
+
+Kiểm thử bằng dữ liệu giả, chỉ dùng thư viện chuẩn Python:
+
+```powershell
+python -m unittest discover -s tests -v
+```
