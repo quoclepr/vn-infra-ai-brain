@@ -109,7 +109,7 @@ python scripts/init_project_brain.py --target "./DU_AN_TEST" --code "DA-TEST" --
 python scripts/snapshot_project.py --project "./DU_AN_TEST" --label "truoc_khi_sua"
 ```
 
-- Khi có `--git`, script khởi tạo bổ sung quy tắc loại trừ `.env*`, khóa PEM/KEY/P12/PFX, khóa SSH, tệp đăng nhập Git/npm/Python và tên chứa `secret`, `token`, `credential`. Quy tắc riêng trong `.gitignore` có sẵn được giữ lại; khối bảo vệ được đặt cuối tệp và chạy lại không làm lặp khối đó. Script từ chối ghi qua `.gitignore` là liên kết tệp.
+- Khi có `--git`, script khởi tạo bổ sung quy tắc loại trừ `.env`, `.env.*`, khóa PEM/KEY/P12/PFX, khóa SSH, tệp đăng nhập Git/npm/Python và tên chứa `secret`, `token`, `credential`. Quy tắc riêng trong `.gitignore` có sẵn được giữ lại; khối bảo vệ được đặt cuối tệp và chạy lại không làm lặp khối đó. Script từ chối ghi qua `.gitignore` là liên kết tệp.
 - Script ZIP tự áp dụng bộ lọc tên bí mật kể cả khi dự án không dùng Git. Nó loại thư mục thông tin đăng nhập phổ biến, cache, bản sao lưu cũ và liên kết tệp/thư mục (gồm junction/reparse point trên Windows); `_Backups` phải là thư mục thật. Bộ lọc tên không phân biệt hoa thường.
 - Bản sao lưu vẫn giữ tài liệu CAD/Office thông thường phục vụ khôi phục dự án. ZIP không được mã hóa; không chia sẻ ZIP chứa hồ sơ riêng tư lên kho công khai.
 - Đây là bộ lọc tên, không phải công cụ quét bí mật trong nội dung hay bộ đọc toàn bộ quy tắc `.gitignore`. Tệp có tên bình thường vẫn có thể chứa thông tin nhạy cảm. Khi bổ sung mẫu tên bí mật, cập nhật cả hai script và kiểm thử hồi quy.
